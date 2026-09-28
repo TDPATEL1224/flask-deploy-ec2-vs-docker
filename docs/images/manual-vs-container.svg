@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 470" font-family="Segoe UI, Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#94a3b8"/></marker>
+  </defs>
+  <rect width="960" height="470" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="20" font-weight="700" fill="#0f172a">Same deployment, two ways: every manual step is one Dockerfile line</text>
+
+  <rect x="24" y="58" width="420" height="44" rx="8" fill="#fef3c7" stroke="#d97706"/>
+  <text x="234" y="86" text-anchor="middle" font-size="15" font-weight="700" fill="#78350f">By hand on EC2 (01-manual-deploy-ec2.sh)</text>
+  <rect x="516" y="58" width="420" height="44" rx="8" fill="#dbeafe" stroke="#2563eb"/>
+  <text x="726" y="86" text-anchor="middle" font-size="15" font-weight="700" fill="#1e3a8a">In the container (Dockerfile)</text>
+
+  <g font-family="Consolas, Menlo, monospace" font-size="13">
+    <rect x="24" y="118" width="420" height="46" rx="6" fill="#fffbeb" stroke="#fcd34d"/>
+    <text x="38" y="146" fill="#1c1917">Ubuntu 26.04 EC2 machine</text>
+    <rect x="516" y="118" width="420" height="46" rx="6" fill="#eff6ff" stroke="#93c5fd"/>
+    <text x="530" y="146" fill="#1c1917">FROM ubuntu:26.04</text>
+
+    <rect x="24" y="174" width="420" height="46" rx="6" fill="#fffbeb" stroke="#fcd34d"/>
+    <text x="38" y="202" fill="#1c1917">sudo apt-get install -y python3 python3-venv</text>
+    <rect x="516" y="174" width="420" height="46" rx="6" fill="#eff6ff" stroke="#93c5fd"/>
+    <text x="530" y="202" fill="#1c1917">RUN apt-get install python3 python3-venv</text>
+
+    <rect x="24" y="230" width="420" height="46" rx="6" fill="#fffbeb" stroke="#fcd34d"/>
+    <text x="38" y="258" fill="#1c1917">python3 -m venv venv &amp;&amp; source venv/bin/activate</text>
+    <rect x="516" y="230" width="420" height="46" rx="6" fill="#eff6ff" stroke="#93c5fd"/>
+    <text x="530" y="258" fill="#1c1917">RUN python3 -m venv /opt/venv  +  ENV PATH</text>
+
+    <rect x="24" y="286" width="420" height="46" rx="6" fill="#fffbeb" stroke="#fcd34d"/>
+    <text x="38" y="314" fill="#1c1917">pip install -r requirements.txt</text>
+    <rect x="516" y="286" width="420" height="46" rx="6" fill="#eff6ff" stroke="#93c5fd"/>
+    <text x="530" y="314" fill="#1c1917">RUN pip install -r requirements.txt</text>
+
+    <rect x="24" y="342" width="420" height="46" rx="6" fill="#fffbeb" stroke="#fcd34d"/>
+    <text x="38" y="370" fill="#1c1917">python3 app.py            # :8080</text>
+    <rect x="516" y="342" width="420" height="46" rx="6" fill="#eff6ff" stroke="#93c5fd"/>
+    <text x="530" y="370" fill="#1c1917">CMD ["python3", "app.py"]  # :8080</text>
+  </g>
+
+  <g stroke="#94a3b8" stroke-width="2" marker-end="url(#a)">
+    <line x1="448" y1="141" x2="512" y2="141"/>
+    <line x1="448" y1="197" x2="512" y2="197"/>
+    <line x1="448" y1="253" x2="512" y2="253"/>
+    <line x1="448" y1="309" x2="512" y2="309"/>
+    <line x1="448" y1="365" x2="512" y2="365"/>
+  </g>
+
+  <rect x="24" y="404" width="420" height="50" rx="8" fill="#fff7ed" stroke="#f97316"/>
+  <text x="234" y="426" text-anchor="middle" font-size="14" font-weight="700" fill="#9a3412">8 commands, repeated on every new machine</text>
+  <text x="234" y="444" text-anchor="middle" font-size="12" fill="#9a3412">tied to this OS version, leaves files behind</text>
+  <rect x="516" y="404" width="420" height="50" rx="8" fill="#ecfdf5" stroke="#10b981"/>
+  <text x="726" y="426" text-anchor="middle" font-size="14" font-weight="700" fill="#065f46">1 command anywhere with Docker</text>
+  <text x="726" y="444" text-anchor="middle" font-size="12" fill="#065f46">docker run -d -p 8080:8080 USER/simple-webapp-flask:v1</text>
+</svg>

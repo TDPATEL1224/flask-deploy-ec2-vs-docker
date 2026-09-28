@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 400" font-family="Segoe UI, Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#475569"/></marker>
+  </defs>
+  <rect width="960" height="400" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="20" font-weight="700" fill="#0f172a">Multi-architecture image: one tag, the right CPU build on every machine</text>
+
+  <rect x="24" y="120" width="230" height="130" rx="10" fill="#dbeafe" stroke="#2563eb"/>
+  <text x="139" y="148" text-anchor="middle" font-size="15" font-weight="700" fill="#1e3a8a">docker buildx build</text>
+  <text x="139" y="172" text-anchor="middle" font-size="12" fill="#1e3a8a">--platform</text>
+  <text x="139" y="190" text-anchor="middle" font-size="12" fill="#1e3a8a">linux/amd64,linux/arm64</text>
+  <text x="139" y="214" text-anchor="middle" font-size="12" font-weight="700" fill="#1e3a8a">--push</text>
+  <text x="139" y="234" text-anchor="middle" font-size="11" fill="#1e3a8a">(--load cannot hold 2 platforms)</text>
+
+  <rect x="330" y="80" width="300" height="210" rx="10" fill="#f0f9ff" stroke="#0ea5e9" stroke-width="1.5"/>
+  <text x="480" y="108" text-anchor="middle" font-size="15" font-weight="700" fill="#075985">Docker Hub</text>
+  <text x="480" y="128" text-anchor="middle" font-size="12" fill="#075985">USER/simple-webapp-flask:v1</text>
+  <rect x="352" y="142" width="256" height="40" rx="6" fill="#ffffff" stroke="#7dd3fc"/>
+  <text x="480" y="167" text-anchor="middle" font-size="12" font-weight="600" fill="#0c4a6e">Manifest list (image index)</text>
+  <rect x="352" y="196" width="122" height="74" rx="6" fill="#fef3c7" stroke="#f59e0b"/>
+  <text x="413" y="226" text-anchor="middle" font-size="13" font-weight="700" fill="#78350f">linux/amd64</text>
+  <text x="413" y="246" text-anchor="middle" font-size="11" fill="#78350f">x86_64 image</text>
+  <rect x="486" y="196" width="122" height="74" rx="6" fill="#ede9fe" stroke="#7c3aed"/>
+  <text x="547" y="226" text-anchor="middle" font-size="13" font-weight="700" fill="#4c1d95">linux/arm64</text>
+  <text x="547" y="246" text-anchor="middle" font-size="11" fill="#4c1d95">ARM image</text>
+
+  <rect x="710" y="70" width="226" height="100" rx="10" fill="#fffbeb" stroke="#f59e0b"/>
+  <text x="823" y="98" text-anchor="middle" font-size="14" font-weight="700" fill="#78350f">EC2 m5.large (x86_64)</text>
+  <text x="823" y="120" text-anchor="middle" font-size="12" fill="#78350f">docker run ... :v1</text>
+  <text x="823" y="142" text-anchor="middle" font-size="12" fill="#78350f">pulls amd64 automatically</text>
+
+  <rect x="710" y="200" width="226" height="100" rx="10" fill="#f5f3ff" stroke="#7c3aed"/>
+  <text x="823" y="228" text-anchor="middle" font-size="14" font-weight="700" fill="#4c1d95">Apple Silicon Mac / Graviton</text>
+  <text x="823" y="250" text-anchor="middle" font-size="12" fill="#4c1d95">docker run ... :v1</text>
+  <text x="823" y="272" text-anchor="middle" font-size="12" fill="#4c1d95">pulls arm64 automatically</text>
+
+  <line x1="254" y1="185" x2="326" y2="185" stroke="#475569" stroke-width="2" marker-end="url(#a)"/>
+  <line x1="630" y1="120" x2="706" y2="120" stroke="#f59e0b" stroke-width="2" marker-end="url(#a)"/>
+  <text x="668" y="112" text-anchor="middle" font-size="11" fill="#b45309">amd64</text>
+  <text x="657" y="242" text-anchor="middle" font-size="11" fill="#6d28d9">arm64</text>
+  <path d="M608,250 C660,250 660,250 706,250" fill="none" stroke="#7c3aed" stroke-width="2" marker-end="url(#a)"/>
+
+  <rect x="24" y="320" width="912" height="56" rx="8" fill="#fef2f2" stroke="#ef4444"/>
+  <text x="480" y="344" text-anchor="middle" font-size="13" font-weight="700" fill="#991b1b">Without this: an image built only for arm64 on a Mac fails on the x86_64 EC2 machine</text>
+  <text x="480" y="364" text-anchor="middle" font-size="12" fill="#991b1b" font-family="Consolas, Menlo, monospace">exec /opt/venv/bin/python3: exec format error</text>
+</svg>
